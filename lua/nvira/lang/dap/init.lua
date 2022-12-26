@@ -72,10 +72,10 @@ for _, language in ipairs({ "typescript", "javascript", "typescriptreact", "java
 end
 
 -- Signs
-require("mark.lang.dap.signs")
+require("nvira.lang.dap.signs")
 
 -- UI
-local dapui = require("mark.lang.dap.nvim-dap-ui")
+local dapui = require("nvira.lang.dap.nvim-dap-ui")
 
 if dapui then
 	dap.listeners.after.event_initialized["dapui_config"] = function()
@@ -90,4 +90,4 @@ if dapui then
 	end
 end
 
-require("mark.lang.dap.keymaps")
+require("nvira.lang.dap.keymaps")

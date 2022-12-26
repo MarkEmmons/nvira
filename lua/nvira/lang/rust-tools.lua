@@ -21,8 +21,8 @@ local opts = {
 			local opts = { noremap = true, silent = true }
 
 			require("nvim-navic").attach(client, bufnr)
-			require("mark.lang.lsp.handlers").LspKeymaps(bufnr)
-			require("mark.lang.lsp.handlers").LspHighlightDocument(client)
+			require("nvira.lang.lsp.handlers").LspKeymaps(bufnr)
+			require("nvira.lang.lsp.handlers").LspHighlightDocument(client)
 
 			keymap(bufnr, "n", "<Leader>1", "<cmd>RustEnableInlayHints<CR>", opts)
 			keymap(bufnr, "n", "<Leader>2", "<cmd>RustDisableInlayHints<CR>", opts)
