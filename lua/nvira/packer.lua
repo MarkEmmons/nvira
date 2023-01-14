@@ -124,11 +124,11 @@ return packer.startup(function(use)
 			"antoinemadec/FixCursorHold.nvim",
 
 			-- Adapters
-			"rouge8/neotest-rust",
+			--"rouge8/neotest-rust",
 			"nvim-neotest/neotest-plenary",
 		},
 	}
-	--use "~/workspace/Lua/neotest-rust"
+	use "~/workspace/Lua/neotest-rust"
 	use "~/workspace/Lua/neotest-deno"
 
 	-- Autopairs
@@ -181,8 +181,8 @@ return packer.startup(function(use)
 
 	-- THEMES
 	use "rktjmp/lush.nvim"
-	use "noahfrederick/vim-noctu" -- Inherit color scheme from the terminal
-	use "~/workspace/Lua/noc2.nvim" -- Inherit color scheme from the terminal
+	--use "noahfrederick/vim-noctu" -- Inherit color scheme from the terminal
+	--use "~/workspace/Lua/noc2.nvim" -- Inherit color scheme from the terminal
 	use "sainnhe/gruvbox-material"
 	use "rebelot/kanagawa.nvim"
 	use "sindrets/oxocarbon-lua.nvim"
