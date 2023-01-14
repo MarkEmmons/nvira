@@ -15,6 +15,13 @@ local opts = {
 	},
 	server = {
 
+  		capabilities = {
+			textDocument = {
+				completion = {
+					completionItem = {
+						snippetSupport = false
+		}}}},
+
 		on_attach = function(client, bufnr)
 
 			local keymap = vim.api.nvim_buf_set_keymap
@@ -29,11 +36,17 @@ local opts = {
 			keymap(bufnr, "n", "<Leader>3", "<cmd>RustSetInlayHints<CR>", opts)
 			keymap(bufnr, "n", "<Leader>4", "<cmd>RustUnsetInlayHints<CR>", opts)
 		end,
+
+		settings = {
+			["rust-analyzer"] = {
+				inlayHints = { locationLinks = false },
+			}
+		}
 	},
 	tools = {
 
 		inlay_hints = {
-			auto = false,	-- Doesn't work :/
+			auto = false,
 		},
 	},
 }
