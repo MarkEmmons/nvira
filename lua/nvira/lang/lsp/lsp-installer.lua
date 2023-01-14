@@ -15,6 +15,10 @@ lsp_installer.on_server_ready(function(server)
 		local sumneko_opts = require("nvira.lang.lsp.settings.sumneko_lua")
 		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
 
+	elseif server.name == "bashls" then
+		local bashls_opts = require("nvira.lang.lsp.settings.bashls")
+		opts = vim.tbl_deep_extend("force", bashls_opts, opts)
+
 	elseif server.name == "denols" then
 		-- Augment vim.g.markdown_fenced_languages to appropriately highlight codefences returned from denols 
 		vim.g.markdown_fenced_languages = { "ts=typescript" }
