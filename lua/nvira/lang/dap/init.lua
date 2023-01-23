@@ -5,43 +5,45 @@ end
 
 --- Adapters ---
 dap.adapters.nlua = function(callback, config)
-	callback({ type = 'server', host = config.host or "127.0.0.1", port = config.port or 8086 })
+	callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
 end
 
 dap.adapters.lldb = {
-	type = 'executable',
-	command = '/usr/bin/lldb-vscode', -- adjust as needed, must be absolute path
-	name = 'lldb'
+	type = "executable",
+	command = "/usr/bin/lldb-vscode", -- adjust as needed, must be absolute path
+	name = "lldb",
 }
 
 dap.adapters.deno = {
-	type = 'executable',
-	command = 'node',
-	args = {os.getenv('HOME') .. '/dev/microsoft/vscode-node-debug2/out/src/nodeDebug.js'},
+	type = "executable",
+	command = "node",
+	args = { os.getenv("HOME") .. "/dev/microsoft/vscode-node-debug2/out/src/nodeDebug.js" },
 }
 
 require("dap-vscode-js").setup({
-	adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
+	adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
 })
 
 --- Configurations ---
-dap.configurations.lua = {{
-	type = 'nlua',
-	request = 'attach',
+dap.configurations.lua = { {
+	type = "nlua",
+	request = "attach",
 	name = "Attach to running Neovim instance",
-}}
+} }
 
-dap.configurations.rust = {{
-	name = 'Launch',
-	type = 'lldb',
-	request = 'launch',
-	program = function()
-		return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-	end,
-	cwd = '${workspaceFolder}',
-	stopOnEntry = false,
-	args = {},
-}}
+dap.configurations.rust = {
+	{
+		name = "Launch",
+		type = "lldb",
+		request = "launch",
+		program = function()
+			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+		end,
+		cwd = "${workspaceFolder}",
+		stopOnEntry = false,
+		args = {},
+	},
+}
 
 for _, language in ipairs({ "typescript", "javascript", "typescriptreact", "javascriptreact" }) do
 	require("dap").configurations[language] = {
@@ -57,15 +59,15 @@ for _, language in ipairs({ "typescript", "javascript", "typescriptreact", "java
 		--	protocol = 'inspector',
 		--},
 		{
-			request = 'launch',
-			name = 'Launch Program',
-			type = 'pwa-node',
-			program = '${file}',
+			request = "launch",
+			name = "Launch Program",
+			type = "pwa-node",
+			program = "${file}",
 			--env
-			cwd = '${workspaceFolder}',
-			runtimeExecutable = 'deno',
+			cwd = "${workspaceFolder}",
+			runtimeExecutable = "deno",
 			--runtimeArgs = { 'run', '--inspect-brk', '--allow-all' },
-			runtimeArgs = { 'test', '${file}', '--allow-all', '--filter', 'helloWorld3', '--inspect-brk' },
+			runtimeArgs = { "test", "${file}", "--allow-all", "--filter", "helloWorld3", "--inspect-brk" },
 			attachSimplePort = 9229,
 		},
 	}
@@ -80,7 +82,7 @@ local dapui = require("nvira.lang.dap.nvim-dap-ui")
 if dapui then
 	dap.listeners.after.event_initialized["dapui_config"] = function()
 		dapui.open()
-		require('neotest').summary.close()
+		require("neotest").summary.close()
 	end
 	dap.listeners.before.event_terminated["dapui_config"] = function()
 		dapui.close()

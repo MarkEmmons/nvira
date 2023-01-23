@@ -9,26 +9,21 @@ local opts = {
 }
 
 local language_servers = {
-	'sumneko_lua',
-	'bashls',
-	'denols',
-	'jedi_language_server',
-	'texlab',
+	"sumneko_lua",
+	"bashls",
+	"denols",
+	"jedi_language_server",
+	"texlab",
 }
 
 for _, language_server in ipairs(language_servers) do
-
 	local status, settings = pcall(require, "nvira.lang.lsp.settings." .. language_server)
 	local ls_opts = status and settings or {}
 
-	nvim_lsp[language_server].setup(
-		vim.tbl_deep_extend(
-			"force",
-			ls_opts,
-			opts))
+	nvim_lsp[language_server].setup(vim.tbl_deep_extend("force", ls_opts, opts))
 end
 
--- Augment vim.g.markdown_fenced_languages to appropriately highlight codefences returned from denols 
+-- Augment vim.g.markdown_fenced_languages to appropriately highlight codefences returned from denols
 vim.g.markdown_fenced_languages = { "ts=typescript" }
 
 require("nvira.lang.lsp.handlers").setup()

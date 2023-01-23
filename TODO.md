@@ -1,7 +1,7 @@
 # TODO
 
 ## CMP
-* If LSP is present, only use buffer-completions inside of strings and comments 
+* If LSP is present, only use buffer-completions inside of strings and comments
 * Merge completion results w/ same name/value
 * Replace LuaSnip with vim-vsnip
 
@@ -12,8 +12,8 @@
 * Retab mapped to <leader>-Tab ???
 
 ## Whitespace
-* Stripwhitespace 
-* Symbols for whitespace 
+* Stripwhitespace
+* Symbols for whitespace
 	* Highlight trailing whitespace
 	* Dots for other whitespace
 	* Arrow for tabs

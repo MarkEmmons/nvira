@@ -3,10 +3,10 @@ if not status_ok then
 	return nil
 end
 
-dapui.setup {
+dapui.setup({
 	icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
 	mappings = {
-		expand = {"<CR>", "<2-LeftMouse>" },
+		expand = { "<CR>", "<2-LeftMouse>" },
 		open = "o",
 		remove = "d",
 		edit = "e",
@@ -19,9 +19,9 @@ dapui.setup {
 		{
 			elements = {
 				--"watches",
-				{id = "breakpoints", size = 0.10},
+				{ id = "breakpoints", size = 0.10 },
 				"stacks",
-				{id = "repl", size = 0.25},
+				{ id = "repl", size = 0.25 },
 			},
 			size = 40,
 			position = "left",
@@ -61,7 +61,7 @@ dapui.setup {
 	render = {
 		max_type_length = nil,
 		max_value_lines = 100,
-	}
-}
+	},
+})
 
 return dapui

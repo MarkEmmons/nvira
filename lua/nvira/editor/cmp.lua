@@ -11,37 +11,37 @@ end
 -- Add some kind_icons
 --   פּ ﯟ   some other good icons
 local kind_icons = {
-  Text = "",
-  Method = "m",
-  Function = "",
-  Constructor = "",
-  Field = "",
-  Variable = "",
-  Class = "",
-  Interface = "",
-  Module = "",
-  Property = "",
-  Unit = "",
-  Value = "",
-  Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "",
-  Struct = "",
-  Event = "",
-  Operator = "",
-  TypeParameter = "",
+	Text = "",
+	Method = "m",
+	Function = "",
+	Constructor = "",
+	Field = "",
+	Variable = "",
+	Class = "",
+	Interface = "",
+	Module = "",
+	Property = "",
+	Unit = "",
+	Value = "",
+	Enum = "",
+	Keyword = "",
+	Snippet = "",
+	Color = "",
+	File = "",
+	Reference = "",
+	Folder = "",
+	EnumMember = "",
+	Constant = "",
+	Struct = "",
+	Event = "",
+	Operator = "",
+	TypeParameter = "",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
 -- cmp.setup
 -- Hold alt to scroll through completion menu.
-cmp.setup {
+cmp.setup({
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body)
@@ -54,12 +54,12 @@ cmp.setup {
 		["<A-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 		["<A-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 		["<A-y>"] = cmp.config.disable,
-		["<A-e>"] = cmp.mapping {
+		["<A-e>"] = cmp.mapping({
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
-		},
+		}),
 		-- Only confirm explicitly selected items.
-		["<CR>"] = cmp.mapping.confirm { select = false },
+		["<CR>"] = cmp.mapping.confirm({ select = false }),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
@@ -108,11 +108,11 @@ cmp.setup {
 	},
 	window = {
 		documentation = {
-    		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 		},
 	},
 	experimental = {
 		ghost_text = false,
 		native_menu = false,
 	},
-}
+})

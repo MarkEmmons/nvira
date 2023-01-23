@@ -13,8 +13,17 @@ U+254x	╀	╁	╂	╃	╄	╅	╆	╇	╈	╉	╊	╋	╌	╍	╎	╏
 U+255x	═	║	╒	╓	╔	╕	╖	╗	╘	╙	╚	╛	╜	╝	╞	╟
 U+256x	╠	╡	╢	╣	╤	╥	╦	╧	╨	╩	╪	╫	╬	╭	╮	╯
 U+257x	╰	╱	╲	╳	╴	╵	╶	╷	╸	╹	╺	╻	╼	╽	╾	╿
-]]--
-local double_icons     = { indent = "║", prefix = "╠", collapsed = "═", expanded = "╗", final_indent = " ", final_prefix = "╚", non_collapsible = "─" }
+]]
+--
+local double_icons = {
+	indent = "║",
+	prefix = "╠",
+	collapsed = "═",
+	expanded = "╗",
+	final_indent = " ",
+	final_prefix = "╚",
+	non_collapsible = "─",
+}
 --local curved_icons   = { indent = "│", prefix = "├", collapsed = "─", expanded = "╮", final_indent = " ", final_prefix = "╰", non_collapsible = "─" }
 --local straight_icons = { indent = "│", prefix = "├", collapsed = "─", expanded = "┐", final_indent = " ", final_prefix = "└", non_collapsible = "─" }
 
@@ -30,19 +39,19 @@ local box_icons = {
 	non_collapsible = icon_set.non_collapsible,
 }
 
-neotest.setup {
+neotest.setup({
 	adapters = {
-		require("neotest-deno") {
+		require("neotest-deno")({
 			--args = { "--coverage=.cov" },
 			--allow = { "--allow-read" },
 			root_files = { "fresh.gen.ts", "dev.ts" },
 			filter_dirs = { "static" },
 			--dap_adapter = "pwa-node",
-		},
+		}),
 		require("neotest-plenary"),
-		require("neotest-rust") {
+		require("neotest-rust")({
 			args = { "--no-capture" },
-		},
+		}),
 	},
 	icons = {
 		child_indent = box_icons.indent,
@@ -57,9 +66,9 @@ neotest.setup {
 		running = "●",
 		running_animated = { "/", "|", "\\", "-", "/", "|", "\\", "-" },
 		skipped = "➥",
-		unknown = "?"
+		unknown = "?",
 	},
-}
+})
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap

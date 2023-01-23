@@ -1,5 +1,5 @@
-require "nvira.opts"
-require "nvira.packer"
-require "nvira.lang"
-require "nvira.editor"
-require "nvira.git"
+require("nvira.opts")
+require("nvira.packer")
+require("nvira.lang")
+require("nvira.editor")
+require("nvira.git")

@@ -3,27 +3,28 @@ if not rust_ok then
 	return
 end
 
-local extension_path = vim.env.HOME .. '/.vscode-oss/extensions/vadimcn.vscode-lldb-1.8.1-universal'
-local codelldb_path = extension_path .. '/adapter/codelldb'
-local liblldb_path = extension_path .. '/lldb/lib/liblldb.so'
+local extension_path = vim.env.HOME .. "/.vscode-oss/extensions/vadimcn.vscode-lldb-1.8.1-universal"
+local codelldb_path = extension_path .. "/adapter/codelldb"
+local liblldb_path = extension_path .. "/lldb/lib/liblldb.so"
 
 local opts = {
 
 	dap = {
-		adapter = require('rust-tools.dap')
-			.get_codelldb_adapter(codelldb_path, liblldb_path)
+		adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
 	},
 	server = {
 
-  		capabilities = {
+		capabilities = {
 			textDocument = {
 				completion = {
 					completionItem = {
-						snippetSupport = false
-		}}}},
+						snippetSupport = false,
+					},
+				},
+			},
+		},
 
 		on_attach = function(client, bufnr)
-
 			local keymap = vim.api.nvim_buf_set_keymap
 			local opts = { noremap = true, silent = true }
 
@@ -40,8 +41,8 @@ local opts = {
 		settings = {
 			["rust-analyzer"] = {
 				inlayHints = { locationLinks = false },
-			}
-		}
+			},
+		},
 	},
 	tools = {
 
