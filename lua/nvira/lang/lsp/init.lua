@@ -8,17 +8,25 @@ local opts = {
 	capabilities = require("nvira.lang.lsp.handlers").capabilities,
 }
 
-local sumneko_opts = require("nvira.lang.lsp.settings.sumneko_lua")
-local bashls_opts = require("nvira.lang.lsp.settings.bashls")
-local denols_opts = require("nvira.lang.lsp.settings.denols")
-local jedils_opts = require("nvira.lang.lsp.settings.jedils")
-local texlab_opts = require("nvira.lang.lsp.settings.texlab")
+local language_servers = {
+	'sumneko_lua',
+	'bashls',
+	'denols',
+	'jedi_language_server',
+	'texlab',
+}
 
-nvim_lsp['sumneko_lua'].setup(vim.tbl_deep_extend("force", sumneko_opts, opts))
-nvim_lsp['bashls'].setup(vim.tbl_deep_extend("force", bashls_opts, opts))
-nvim_lsp['denols'].setup(vim.tbl_deep_extend("force", denols_opts, opts))
-nvim_lsp['jedi_language_server'].setup(vim.tbl_deep_extend("force", jedils_opts, opts))
-nvim_lsp['texlab'].setup(vim.tbl_deep_extend("force", texlab_opts, opts))
+for _, language_server in ipairs(language_servers) do
+
+	local status, settings = pcall(require, "nvira.lang.lsp.settings." .. language_server)
+	local ls_opts = status and settings or {}
+
+	nvim_lsp[language_server].setup(
+		vim.tbl_deep_extend(
+			"force",
+			ls_opts,
+			opts))
+end
 
 -- Augment vim.g.markdown_fenced_languages to appropriately highlight codefences returned from denols 
 vim.g.markdown_fenced_languages = { "ts=typescript" }
