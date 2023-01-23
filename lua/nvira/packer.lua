@@ -101,9 +101,6 @@ return packer.startup(function(use)
 	-- LSP
 	use {
 		"neovim/nvim-lspconfig",
-		requires = {
-			"williamboman/nvim-lsp-installer",
-		}
 	}
 
 	-- rust-tools
