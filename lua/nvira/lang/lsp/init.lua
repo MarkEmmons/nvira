@@ -12,6 +12,7 @@ local language_servers = {
 	"sumneko_lua",
 	"bashls",
 	"denols",
+	"html",
 	"jedi_language_server",
 	"texlab",
 }
