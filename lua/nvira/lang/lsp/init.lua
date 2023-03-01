@@ -11,6 +11,7 @@ local opts = {
 local language_servers = {
 	"sumneko_lua",
 	"bashls",
+	"cssls",
 	"denols",
 	"html",
 	"jedi_language_server",
