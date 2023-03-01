@@ -51,6 +51,7 @@ neotest.setup({
 		require("neotest-plenary"),
 		require("neotest-rust")({
 			args = { "--no-capture" },
+			dap_adapter = "codelldb",
 		}),
 	},
 	icons = {

@@ -14,6 +14,8 @@ dap.adapters.lldb = {
 	name = "lldb",
 }
 
+dap.adapters.codelldb = require("nvira.lang.dap.codelldb").codelldb_adapter
+
 dap.adapters.deno = {
 	type = "executable",
 	command = "node",
